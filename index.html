@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Productivity Manager</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <meta name="theme-color" content="#2563eb" />
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <h1>Productivity Manager</h1>
+        <p>Manage your daily tasks, notes, and calendar events.</p>
+      </div>
+      <button id="installBtn" class="install-btn">Install App</button>
+    </header>
+
+    <main class="content">
+      <section class="card overview-card">
+        <h2>Today</h2>
+        <div class="overview-grid">
+          <div class="overview-tile">
+            <strong id="todayTasksCount">0</strong>
+            <span>Tasks</span>
+          </div>
+          <div class="overview-tile">
+            <strong id="todayNotesCount">0</strong>
+            <span>Notes</span>
+          </div>
+          <div class="overview-tile">
+            <strong id="todayEventsCount">0</strong>
+            <span>Events</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="card split-card">
+        <div class="panel">
+          <h2>Tasks</h2>
+          <form id="taskForm" class="form-row">
+            <input id="taskText" type="text" placeholder="Add a new task" required />
+            <input id="taskDate" type="date" required />
+            <button type="submit">Add</button>
+          </form>
+          <ul id="taskList" class="item-list"></ul>
+        </div>
+
+        <div class="panel">
+          <h2>Notes</h2>
+          <form id="noteForm" class="form-column">
+            <textarea id="noteText" rows="4" placeholder="Write a note for today"></textarea>
+            <button type="submit">Save Note</button>
+          </form>
+          <ul id="noteList" class="item-list"></ul>
+        </div>
+      </section>
+
+      <section class="card calendar-card">
+        <div class="calendar-header">
+          <div>
+            <h2>Calendar</h2>
+            <p id="calendarMonth"></p>
+          </div>
+          <div class="calendar-controls">
+            <button id="prevMonth">←</button>
+            <button id="nextMonth">→</button>
+          </div>
+        </div>
+
+        <div id="calendarGrid" class="calendar-grid"></div>
+
+        <div class="calendar-details">
+          <div class="calendar-select-row">
+            <label for="eventDate">Selected date</label>
+            <input id="eventDate" type="date" />
+          </div>
+
+          <form id="eventForm" class="form-column">
+            <input id="eventTitle" type="text" placeholder="Event title" required />
+            <input id="eventTime" type="time" />
+            <textarea id="eventDescription" rows="3" placeholder="Event description"></textarea>
+            <button type="submit">Add Event</button>
+          </form>
+
+          <div>
+            <h3>Events on <span id="selectedDateLabel"></span></h3>
+            <ul id="eventList" class="item-list"></ul>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+</body>
+</html>
